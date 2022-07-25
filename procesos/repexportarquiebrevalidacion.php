@@ -15,242 +15,160 @@ $validacionf = $_POST["ncvalidacionf"];
 $tienda = $_POST["tiendaf"];
 
 
-if ($validacionf === 'PENDIENTE') {
+if ($validacionf === 'PENDIENTE' || $validacionf === 'ATENDIDO' || $validacionf === 'CURSO' || $validacionf === 'DEVUELTO') {
     $sqlEXCEL = " SELECT    usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
+                            ncquiebre.fecha_registro,  
+                            ncquiebre.fecha_activacion,
+                            ncquiebre.fecha_inicio_averia,
                             ncquiebre.ruc, 
                             ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
+                            ncquiebre.servicio,
+                            ncquiebre.tipo_averia, 
+                            ncquiebre.problema_equipo, 
+                            ncquiebre.detalle_equipo, 
+                            ncquiebre.ticket_atencion, 
+                            ncquiebre.fecha_ticket_atencion, 
+                            ncquiebre.numero_ticket, 
+                            ncquiebre.contacto1, 
+                            ncquiebre.celular1, 
+                            ncquiebre.contacto2, 
+                            ncquiebre.celular2,
+                            ncquiebre.numero_problema, 
+                            ncquiebre.zonal_telefonica, 
+                            ncquiebre.comentario_ejecutivo,
+                            ncquiebre.estado,
+                            ncquiebre.casosf,
+                            ncquiebre.comentario_validador
+                            FROM quiebre as ncquiebre 
                             inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor= ncquiebre.id_supervisor
                             where  year(ncquiebre.fecha_ingreso)<='$ano' 
-                            and ncquiebre.validacion='$validacionf' 
-                            and ncquiebre.zonal='$tienda'
-                            ORDER BY ncquiebre.fecha_ingreso DESC";
-} else if ($validacionf === 'ATENDIDO') {
-
-    $sqlEXCEL = " SELECT    usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
-                            ncquiebre.ruc, 
-                            ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
-                            inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor= ncquiebre.id_supervisor 
-                            where month(ncquiebre.fecha_validacion)='$periodo' and year(ncquiebre.fecha_validacion)='$ano' 
-                            and ncquiebre.validacion='$validacionf' 
-                            and ncquiebre.zonal='$tienda'
-                            ORDER BY ncquiebre.fecha_ingreso DESC";
-} else if ($validacionf === 'CURSO') {
-
-    $sqlEXCEL = " SELECT    usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
-                            ncquiebre.ruc, 
-                            ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
-                            inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor= ncquiebre.id_supervisor 
-                            where month(ncquiebre.fecha_ingreso)='$periodo' and year(ncquiebre.fecha_ingreso)='$ano' 
-                            and ncquiebre.validacion='$validacionf'  and ncquiebre.zonal='$tienda'
-                            ORDER BY ncquiebre.fecha_ingreso DESC";
-} else if ($validacionf === 'DEVUELTO') {
-    $sqlEXCEL = " SELECT    usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
-                            ncquiebre.ruc, 
-                            ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
-                            inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor= ncquiebre.id_supervisor 
-                            where month(ncquiebre.fecha_ingreso)='$periodo' and year(ncquiebre.fecha_ingreso)='$ano' 
-                            and ncquiebre.validacion='$validacionf'  and ncquiebre.zonal='$tienda'
+                            and ncquiebre.estado='$validacionf' 
+                            and ncquiebre.zonal_telefonica='$tienda'
                             ORDER BY ncquiebre.fecha_ingreso DESC";
 } else {
 
     $sqlEXCEL = " SELECT    usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
+                            ncquiebre.fecha_registro,  
+                            ncquiebre.fecha_activacion,
+                            ncquiebre.fecha_inicio_averia,
                             ncquiebre.ruc, 
                             ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
+                            ncquiebre.servicio,
+                            ncquiebre.tipo_averia, 
+                            ncquiebre.problema_equipo, 
+                            ncquiebre.detalle_equipo, 
+                            ncquiebre.ticket_atencion, 
+                            ncquiebre.fecha_ticket_atencion, 
+                            ncquiebre.numero_ticket, 
+                            ncquiebre.contacto1, 
+                            ncquiebre.celular1, 
+                            ncquiebre.contacto2, 
+                            ncquiebre.celular2,
+                            ncquiebre.numero_problema, 
+                            ncquiebre.zonal_telefonica, 
+                            ncquiebre.comentario_ejecutivo,
+                            ncquiebre.estado,
+                            ncquiebre.casosf,
+                            ncquiebre.comentario_validador 
+                            FROM quiebre as ncquiebre 
                             inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor = ncquiebre.id_supervisor 
                             where  year(ncquiebre.fecha_ingreso)<='$ano' 
-                            and ncquiebre.validacion='PENDIENTE'  
-                            and ncquiebre.zonal='$tienda'
+                            and ncquiebre.estado='PENDIENTE'  
+                            and ncquiebre.zonal_telefonica='$tienda'
 
                             UNION
 
                     SELECT  usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
+                            ncquiebre.fecha_registro,  
+                            ncquiebre.fecha_activacion,
+                            ncquiebre.fecha_inicio_averia,
                             ncquiebre.ruc, 
                             ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
+                            ncquiebre.servicio,
+                            ncquiebre.tipo_averia, 
+                            ncquiebre.problema_equipo, 
+                            ncquiebre.detalle_equipo, 
+                            ncquiebre.ticket_atencion, 
+                            ncquiebre.fecha_ticket_atencion, 
+                            ncquiebre.numero_ticket, 
+                            ncquiebre.contacto1, 
+                            ncquiebre.celular1, 
+                            ncquiebre.contacto2, 
+                            ncquiebre.celular2,
+                            ncquiebre.numero_problema, 
+                            ncquiebre.zonal_telefonica, 
+                            ncquiebre.comentario_ejecutivo,
+                            ncquiebre.estado,
+                            ncquiebre.casosf,
+                            ncquiebre.comentario_validador
+                            FROM quiebre as ncquiebre 
                             inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor = ncquiebre.id_supervisor 
-                            where month(ncquiebre.fecha_validacion)='$periodo' 
-                            and year(ncquiebre.fecha_validacion)='$ano' 
-                            and ncquiebre.validacion='ATENDIDO' 
-                            and ncquiebre.zonal='$tienda'
+                            and year(ncquiebre.fecha_registro)='$ano' 
+                            and ncquiebre.estado='ATENDIDO' 
+                            and ncquiebre.zonal_telefonica='$tienda'
 
                             UNION
 
                     SELECT  usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
+                            ncquiebre.fecha_registro,  
+                            ncquiebre.fecha_activacion,
+                            ncquiebre.fecha_inicio_averia,
                             ncquiebre.ruc, 
                             ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
+                            ncquiebre.servicio,
+                            ncquiebre.tipo_averia, 
+                            ncquiebre.problema_equipo, 
+                            ncquiebre.detalle_equipo, 
+                            ncquiebre.ticket_atencion, 
+                            ncquiebre.fecha_ticket_atencion, 
+                            ncquiebre.numero_ticket, 
+                            ncquiebre.contacto1, 
+                            ncquiebre.celular1, 
+                            ncquiebre.contacto2, 
+                            ncquiebre.celular2,
+                            ncquiebre.numero_problema, 
+                            ncquiebre.zonal_telefonica, 
+                            ncquiebre.comentario_ejecutivo,
+                            ncquiebre.estado,
+                            ncquiebre.casosf,
+                            ncquiebre.comentario_validador
+                            FROM quiebre as ncquiebre 
                             inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor = ncquiebre.id_supervisor 
-                            where month(ncquiebre.fecha_ingreso)='$periodo' 
                             and year(ncquiebre.fecha_ingreso)='$ano' 
-                            and ncquiebre.validacion='CURSO' 
-                            and ncquiebre.zonal='$tienda'
+                            and ncquiebre.estado='CURSO' 
+                            and ncquiebre.zonal_telefonica='$tienda'
 
                             UNION
 
                     SELECT  usu.personal, 
-                            sup.nombre, 
-                            ncquiebre.fecha_ingreso,  
-                            ncquiebre.fecha_actualizacion,
+                            ncquiebre.fecha_registro,  
+                            ncquiebre.fecha_activacion,
+                            ncquiebre.fecha_inicio_averia,
                             ncquiebre.ruc, 
                             ncquiebre.razon_social, 
-                            ncquiebre.modalidad,
-                            ncquiebre.tipo, 
-                            ncquiebre.q_lineas, 
-                            ncquiebre.cargo_fijo, 
-                            ncquiebre.contacto, 
-                            ncquiebre.telefono1, 
-                            ncquiebre.correo, 
-                            ncquiebre.dni, 
-                            ncquiebre.comentario_ejecutivo, 
-                            ncquiebre.estado, 
-                            ncquiebre.validacion,
-                            ncquiebre.fecha_validacion, 
-                            ncquiebre.oportunidad, 
-                            ncquiebre.casosf 
-                            FROM quiebre_movil as ncquiebre 
+                            ncquiebre.servicio,
+                            ncquiebre.tipo_averia, 
+                            ncquiebre.problema_equipo, 
+                            ncquiebre.detalle_equipo, 
+                            ncquiebre.ticket_atencion, 
+                            ncquiebre.fecha_ticket_atencion, 
+                            ncquiebre.numero_ticket, 
+                            ncquiebre.contacto1, 
+                            ncquiebre.celular1, 
+                            ncquiebre.contacto2, 
+                            ncquiebre.celular2,
+                            ncquiebre.numero_problema, 
+                            ncquiebre.zonal_telefonica, 
+                            ncquiebre.comentario_ejecutivo,
+                            ncquiebre.estado,
+                            ncquiebre.casosf,
+                            ncquiebre.comentario_validador
+                            FROM quiebre as ncquiebre 
                             inner join usuario as usu on usu.id_usuario = ncquiebre.id_usuario 
-                            left JOIN supervisor as sup on sup.id_supervisor= ncquiebre.id_supervisor 
-                            where month(ncquiebre.fecha_ingreso)='$periodo' 
                             and year(ncquiebre.fecha_ingreso)='$ano' 
-                            and ncquiebre.validacion='DEVUELTO' 
-                            and ncquiebre.zonal='$tienda'
-
-";
+                            and ncquiebre.estado='DEVUELTO' 
+                            and ncquiebre.zonal_telefonica='$tienda' ";
 }
-
-
-
 
 $resultEXCEL = mysqli_query($conexion, $sqlEXCEL);
 
@@ -260,25 +178,28 @@ $resultEXCEL = mysqli_query($conexion, $sqlEXCEL);
     <thead style="background-color: #dc3545;color: blue; font-weight: bold;">
         <tr>
             <th>PERSONAL</th>
-            <th>SUPERVISOR</th>
-            <th>FECHA INGRESO</th>
-            <th>FECHA ULT ACTUALIZACION</th>
+            <th>FECHA REGISTRO QUIEBRE</th>
+            <th>FECHA ACTIVACION DEL SERVICIO</th>
+            <th>FECHA INICIO DE AVERIA</th>
             <th>RUC</th>
             <th>RAZON SOCIAL</th>
-            <th>MODALIDAD</th>
-            <th>TIPO</th>
-            <th>Q_LINEAS</th>
-            <th>CARGO_FIJO</th>
-            <th>CONTACTO</th>
-            <th>TELEFONO 1</th>
-            <th>CORREO</th>
-            <th>DNI</th>
+            <th>SERVICIO</th>
+            <th>TIPO DE AVERÍA</th>
+            <th>PROBLEMA</th>
+            <th>DETALLE</th>
+            <th>TICKET DE QUIEBRE</th>
+            <th>FECHA DE TICKET</th>
+            <th>NUMERO DE TICKET</th>
+            <th>CONTACTO1</th>
+            <th>CELULAR1</th>
+            <th>CONTACTO2</th>
+            <th>CELULAR2</th>
+            <th>NÚMERO DE PROBLEMA</th>
+            <th>REGIÓN</th>
             <th>COMENTARIO EJECUTIVO</th>
-            <th>ESTADO</th>
-            <th>VALIDACION</th>
-            <th>FECHA VALIDACION</th>
-            <th>OPORTUNIDAD</th>
+            <th>VALIDACIÓN</th>
             <th>CASO SF</th>
+            <th>COMENTARIO VALIDADOR</th>
         </tr>
     </thead>
 
@@ -289,7 +210,6 @@ $resultEXCEL = mysqli_query($conexion, $sqlEXCEL);
             <tr>
                 <td><?php echo utf8_decode($mostrar[0]) ?></td>
                 <td><?php echo utf8_decode($mostrar[1]) ?></td>
-
                 <td><?php echo utf8_decode($mostrar[2]) ?></td>
                 <td><?php echo utf8_decode($mostrar[3]) ?></td>
                 <td><?php echo utf8_decode($mostrar[4]) ?></td>
@@ -302,17 +222,15 @@ $resultEXCEL = mysqli_query($conexion, $sqlEXCEL);
                 <td><?php echo utf8_decode($mostrar[11]) ?></td>
                 <td><?php echo utf8_decode($mostrar[12]) ?></td>
                 <td><?php echo utf8_decode($mostrar[13]) ?></td>
-
                 <td><?php echo utf8_decode($mostrar[14]) ?></td>
                 <td><?php echo utf8_decode($mostrar[15]) ?></td>
                 <td><?php echo utf8_decode($mostrar[16]) ?></td>
                 <td><?php echo utf8_decode($mostrar[17]) ?></td>
-
                 <td><?php echo utf8_decode($mostrar[18]) ?></td>
                 <td><?php echo utf8_decode($mostrar[19]) ?></td>
-
-
-
+                <td><?php echo utf8_decode($mostrar[20]) ?></td>
+                <td><?php echo utf8_decode($mostrar[21]) ?></td>
+                <td><?php echo utf8_decode($mostrar[22]) ?></td>
             </tr>
         <?php
         }

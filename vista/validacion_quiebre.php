@@ -431,3 +431,27 @@ if (isset($_SESSION["idusu"])) {
 
     header('Location: /OCH/vista/login.php');
 } ?>
+
+<th>PERSONAL</th> /* 0 */
+<th>FECHA REGISTRO QUIEBRE</th> /* 1 */
+<th>FECHA ACTIVACION DEL SERVICIO</th> /* 2 */
+<th>FECHA INICIO DE AVERIA</th> /* 3 */
+<th>RUC</th> /* 4 */
+<th>RAZON SOCIAL</th> /* 5 */
+<th>SERVICIO</th> /* 6 */
+<th>TIPO DE AVERÍA</th> /* 7 */
+<th>PROBLEMA</th> /* 8 */
+<th>DETALLE</th> /* 9 */
+<th>TICKET DE QUIEBRE</th> /* 10 */
+<th>FECHA DE TICKET</th> /* 11 */
+<th>NUMERO DE TICKET</th> /* 12 */
+<th>CONTACTO1</th> /* 13 */
+<th>CELULAR1</th>/* 14 */
+<th>CONTACTO2</th>/* 15 */
+<th>CELULAR2</th>/* 16 */
+<th>NÚMERO DE PROBLEMA</th>/* 17 */
+<th>REGIÓN</th>/* 18 */
+<th>COMENTARIO EJECUTIVO</th>/* 19 */
+<th>VALIDACIÓN</th>/* 20 */
+<th>CASO SF</th>/* 21 */
+<th>COMENTARIO VALIDADOR</th>/* 22 */

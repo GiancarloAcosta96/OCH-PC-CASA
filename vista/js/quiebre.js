@@ -41,9 +41,15 @@ $("#cerrar1").click(function () {
   $("#ncregion").empty().append("whatever");
   $("#fechaActivacion").val("");
   $("#fechaInicio").val("");
+  $("ncruc").val("");
   $("#ncrazonsocial").val("");
   $("#quiebre_servicio").val("");
   $("#quiebre_tipo_averia").val("");
+  $("#quiebre_problemas").val("");
+  $("#quiebre_detalle").val("");
+  $("#quiebre_ticket").val("");
+  $("#fechaTicket").val("");
+  $("#quiebre_numero_tickets").val("");
   $("#quiebre_contacto1").val("");
   $("#quiebre_contacto2").val("");
   $("#quiebre_celular1").val("");
@@ -56,9 +62,15 @@ $("#cerrar2").click(function () {
   $("#ncregion").empty().append("whatever");
   $("#fechaActivacion").val("");
   $("#fechaInicio").val("");
+  $("ncruc").val("");
   $("#ncrazonsocial").val("");
   $("#quiebre_servicio").val("");
   $("#quiebre_tipo_averia").val("");
+  $("#quiebre_problemas").val("");
+  $("#quiebre_detalle").val("");
+  $("#quiebre_ticket").val("");
+  $("#fechaTicket").val("");
+  $("#quiebre_numero_ticket").val("");
   $("#quiebre_contacto1").val("");
   $("#quiebre_contacto2").val("");
   $("#quiebre_celular1").val("");
@@ -71,10 +83,9 @@ $("#btnRegistrar").click(function () {
   if (
     $("#ncregion").val() == "0" ||
     $("#fechaActivacion").val() == null ||
-    $("#fechaInicio").val() == null ||
-    $("#fechaTicket").val() == null ||
+    $("#quiebre_servicio").val() == null ||
+    $("#quiebre_tipo_averia").val() == null ||
     $("#quiebre_contacto1").val() == "" ||
-    $("#quiebre_contacto1").val() == "0" ||
     $("#quiebre_celular1").val() == "" ||
     $("#quiebre_celular1").val() == "0" ||
     $("#quiebre_numero_problema").val() == null ||
@@ -320,6 +331,6 @@ $("#btnActualizar").click(function () {
       });
     }
   } else {
-    alertify.error("VALIDADO COMO:" + $("#ncvalidacions").val());
+    alertify.error("LA AVERÍA SE ENCUENTRA: " + $("#ncvalidacions").val());
   }
 });

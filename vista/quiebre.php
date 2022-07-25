@@ -2,23 +2,14 @@
 session_start();
 
 if (isset($_SESSION["idusu"])) {
-
     $idusu = $_SESSION["idusu"];
     require_once "../capa_conexion/conexion.php";
     $obj = new conectar();
     $conexion = $obj->conexion();
-
-
-
     $sqlsup = "SELECT id_supervisor from usuario where id_usuario='$idusu'";
-
     $resultsup = mysqli_query($conexion, $sqlsup);
-
     $versup = mysqli_fetch_array($resultsup);
-
     $idsupervisor = $versup[0];
-
-
 ?>
 
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -114,39 +105,27 @@ if (isset($_SESSION["idusu"])) {
                                     <option value="10">OCTUBRE</option>
                                     <option value="11">NOVIEMBRE</option>
                                     <option value="12">DICIEMBRE</option>
-
                                 </select>
                             </div>
 
 
                             <div class="col-xs-1">
                                 <label>VALIDACION</label>
-
                             </div>
                             <div class="col-xs-2">
-
                                 <select name="ncestado" class="form-control" id='ncestado'>
-
                                     <option value="PENDIENTE">PENDIENTE</option>
                                     <option value="ATENDIDO">ATENDIDO</option>
                                     <option value="CURSO">EN CURSO</option>
                                     <option value="DEVUELTO">DEVUELTO</option>
                                     <option value="TODO" selected>TODO</option>
-
                                 </select>
-
-
                             </div>
                             <div class="col-xs-2">
                                 <button type="button" class="btn btn-warning" id="btnfiltrar">FILTRAR</button>
                             </div>
-
-
-
-
                         </div>
                     </ol>
-
                 </form>
 
 
@@ -193,8 +172,6 @@ if (isset($_SESSION["idusu"])) {
                                                                                                                                                                 $hoy = date("Y-m-d");
                                                                                                                                                                 echo $hoy ?>">
 
-
-
                                                 <label>Fecha Activación del servicio: </label>
                                                 <input type="date" class="form-control input-sm" id="fechaActivacion" name="fechaActivacion">
                                             </div>
@@ -204,26 +181,9 @@ if (isset($_SESSION["idusu"])) {
                                                 <input type="date" class="form-control input-sm" id="fechaInicio" name="fechaInicio">
                                             </div>
 
-
-                                            <!-- <div class="col-xs-4">
-                                                <label>RUC</label>
-                                                <input type="text" class="form-control input-sm" id="quiebreruc" name="quiebreruc" required>
-
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <label>Modalidad</label>
-                                                <select name="ncmodalidadquiebre" class="form-control" id='ncmodalidadquiebre'>
-                                                    <option value="MOVIL" selected>MOVIL</option>
-                                                    <option value="BAM">BAM</option>
-                                                    <option value="FIJA">FIJA</optionM>
-                                                </select>
-                                            </div> -->
                                         </div>
                                         <!--- div para elegir el tipo de respuesta-->
                                         <br>
-
-
-
 
                                         <div id="nuevocliente" style="display:show">
                                             <!--- div si la respuesta es titular interesado-->
@@ -232,18 +192,12 @@ if (isset($_SESSION["idusu"])) {
                                                 <div class="col-xs-4">
                                                     <label>RUC</label>
                                                     <input type="text" disabled="" class="form-control input-sm" id="ncruc" name="ncruc" required>
-
                                                 </div>
-
-
                                                 <div class="col-xs-8">
                                                     <label>Razón Social</label>
                                                     <input type="text" disabled="" class="form-control input-sm" id="ncrazonsocial" name="ncrazonsocial">
-
                                                 </div>
-
                                             </div>
-
                                             <br>
 
 
